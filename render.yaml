@@ -1,18 +1,18 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: BlogApp
+    databaseName: blogapp_bcix
+    user: blogapp_bcix_user
 
 services:
   - type: web
-    name: mysite
+    name: Ego
     env: ruby
     buildCommand: './bin/render-build.sh'
     startCommand: 'bundle exec puma -C config/puma.rb'
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysite
+          name: blogapp_bcix
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
